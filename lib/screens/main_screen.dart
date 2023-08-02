@@ -36,7 +36,6 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void bookmarkToList(NewsModel item) {
-    setState(() {});
     if (bookmarkedList.contains(item)) {
       bookmarkedList.remove(item);
     } else {
@@ -60,7 +59,6 @@ class _MainScreenState extends State<MainScreen> {
       );
     }
     return Scaffold(
-      drawer: const Drawer(),
       body: activeScreen,
       bottomNavigationBar: buildBottomNavigationBar(),
     );
@@ -68,6 +66,7 @@ class _MainScreenState extends State<MainScreen> {
 
   BottomNavigationBar buildBottomNavigationBar() {
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       elevation: 20,
       currentIndex: indexScreen,
       backgroundColor: Colors.white70,

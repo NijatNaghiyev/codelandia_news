@@ -1,4 +1,5 @@
 import 'package:codelandia_news/constants/color.dart';
+import 'package:codelandia_news/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../models/news_model.dart';
@@ -98,8 +99,10 @@ class CardWidget extends StatelessWidget {
                         onPressed: () {
                           bookmarkToList(item);
                         },
-                        icon: const Icon(
-                          Icons.bookmark_border_outlined,
+                        icon: Icon(
+                          bookmarkedList.contains(item)
+                              ? Icons.bookmark
+                              : Icons.bookmark_border_outlined,
                           color: kColorSian,
                         ),
                       ),
