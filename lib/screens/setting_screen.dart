@@ -9,6 +9,9 @@ class SettingScreen extends StatefulWidget {
   State<SettingScreen> createState() => _SettingScreenState();
 }
 
+bool isNotification = false;
+ValueNotifier<bool> isDarkMode = ValueNotifier(false);
+
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,12 @@ class _SettingScreenState extends State<SettingScreen> {
               Icons.payments_outlined,
               color: kColorSian,
             ),
-            title: const Text('Payment Method'),
+            title: Text(
+              'Payment Method',
+              style: TextStyle(
+                color: isDarkMode.value ? Colors.white : Colors.black,
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18),
             onTap: () {},
           ),
@@ -45,9 +53,66 @@ class _SettingScreenState extends State<SettingScreen> {
               Icons.person_2_outlined,
               color: kColorSian,
             ),
-            title: const Text('Personal Information'),
+            title: Text(
+              'Personal Information',
+              style: TextStyle(
+                color: isDarkMode.value ? Colors.white : Colors.black,
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18),
             onTap: () {},
+          ),
+          Divider(color: Colors.grey.shade200),
+          SwitchListTile(
+            inactiveThumbColor: Colors.grey,
+            inactiveTrackColor: Colors.transparent,
+            activeColor: kColorSian,
+            title: Row(
+              children: [
+                const Icon(
+                  Icons.notifications_outlined,
+                  color: kColorSian,
+                ),
+                const SizedBox(width: 16),
+                Text(
+                  'Notifications',
+                  style: TextStyle(
+                    color: isDarkMode.value ? Colors.white : Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            value: isNotification,
+            onChanged: (value) {
+              setState(() {});
+              isNotification = value;
+            },
+          ),
+          Divider(color: Colors.grey.shade200),
+          SwitchListTile(
+            inactiveThumbColor: Colors.grey,
+            inactiveTrackColor: Colors.transparent,
+            activeColor: kColorSian,
+            title: Row(
+              children: [
+                const Icon(
+                  Icons.dark_mode_outlined,
+                  color: kColorSian,
+                ),
+                const SizedBox(width: 16),
+                Text(
+                  'Dark mode',
+                  style: TextStyle(
+                    color: isDarkMode.value ? Colors.white : Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            value: isDarkMode.value,
+            onChanged: (value) {
+              setState(() {});
+              isDarkMode.value = value;
+            },
           ),
           Divider(color: Colors.grey.shade200),
           ListTile(
@@ -55,18 +120,16 @@ class _SettingScreenState extends State<SettingScreen> {
               Icons.help_outline,
               color: kColorSian,
             ),
-            title: const Text('Help'),
-            trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18),
-            onTap: () {},
-          ),
-          Divider(color: Colors.grey.shade200),
-          ListTile(
-            leading: const Icon(
-              Icons.notifications_outlined,
-              color: kColorSian,
+            title: Text(
+              'Help',
+              style: TextStyle(
+                color: isDarkMode.value ? Colors.white : Colors.black,
+              ),
             ),
-            title: const Text('Notifications'),
-            trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18),
+            trailing: const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 18,
+            ),
             onTap: () {},
           ),
           Divider(color: Colors.grey.shade200),

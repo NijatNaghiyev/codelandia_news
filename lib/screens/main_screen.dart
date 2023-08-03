@@ -8,6 +8,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../constants/color.dart';
 import '../data/news_list_item.dart';
+import '../main.dart';
 import '../models/news_model.dart';
 
 class MainScreen extends StatefulWidget {
@@ -46,6 +47,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    themeMode.addListener(() {
+      setState(() {});
+    });
+
     filterList();
     Widget activeScreen = BreakingFeedScreen(
       bookmarkToList: bookmarkToList,
