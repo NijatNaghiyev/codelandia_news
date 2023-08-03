@@ -1,5 +1,4 @@
 import 'package:codelandia_news/data/news_list_item.dart';
-import 'package:codelandia_news/screens/breaking_feed_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/color.dart';
@@ -57,49 +56,49 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     fontSize: 18),
               ),
               trailing: IconButton(
-                onPressed: () {
-                  print(typeOfNews);
-                },
+                onPressed: () {},
                 icon: const Icon(
                   Icons.search,
                   color: Colors.white,
                 ),
               ),
             ),
-            SizedBox(
-              height: 60,
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemCount: typeList.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {});
-                          indexTypeNews = index;
-                          typeOfNews = typeList[index];
-                        },
-                        child: Text(
-                          typeList[index],
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+            Expanded(
+              child: SizedBox(
+                height: 60,
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: typeList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            setState(() {});
+                            indexTypeNews = index;
+                            typeOfNews = typeList[index];
+                          },
+                          child: Text(
+                            typeList[index],
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: 3,
-                        width: 70,
-                        color: indexTypeNews == index
-                            ? Colors.white
-                            : Colors.transparent,
-                      ),
-                    ],
-                  );
-                },
+                        Container(
+                          height: 3,
+                          width: 70,
+                          color: indexTypeNews == index
+                              ? Colors.white
+                              : Colors.transparent,
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           ],

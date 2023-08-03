@@ -4,6 +4,7 @@ import 'package:codelandia_news/screens/bookmarks_screen.dart';
 import 'package:codelandia_news/screens/breaking_feed_screen.dart';
 import 'package:codelandia_news/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../constants/color.dart';
 import '../data/news_list_item.dart';
@@ -60,41 +61,40 @@ class _MainScreenState extends State<MainScreen> {
     }
     return Scaffold(
       body: activeScreen,
-      bottomNavigationBar: buildBottomNavigationBar(),
+      bottomNavigationBar: buildGNav(),
     );
   }
 
-  BottomNavigationBar buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      elevation: 20,
-      currentIndex: indexScreen,
-      backgroundColor: Colors.white70,
-      selectedFontSize: 12,
-      unselectedLabelStyle: const TextStyle(
+  GNav buildGNav() {
+    return GNav(
+      textSize: 12,
+      textStyle: const TextStyle(
         fontWeight: FontWeight.bold,
+        color: kColorBottomBarIcon,
       ),
-      selectedLabelStyle: const TextStyle(
-        fontWeight: FontWeight.bold,
-      ),
-      onTap: (value) {
+      activeColor: kColorBottomBarIcon,
+      color: Colors.grey,
+      onTabChange: (value) {
         setState(() {});
         indexScreen = value;
       },
-      showUnselectedLabels: true,
-      selectedItemColor: kColorSian,
-      unselectedItemColor: Colors.grey,
-      items: const [
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.newspaper,
-            ),
-            label: 'Breaking Feed'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.category), label: 'Categories'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_border), label: 'Bookmarks'),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+      tabs: [
+        const GButton(
+          icon: Icons.newspaper,
+          text: 'Breaking',
+        ),
+        const GButton(
+          icon: Icons.file_copy,
+          text: 'Categories',
+        ),
+        GButton(
+          icon: indexScreen == 2 ? Icons.bookmark : Icons.bookmark_border,
+          text: 'Bookmarks',
+        ),
+        const GButton(
+          icon: Icons.settings,
+          text: 'Settings',
+        ),
       ],
     );
   }

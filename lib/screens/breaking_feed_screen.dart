@@ -1,4 +1,3 @@
-import 'package:codelandia_news/data/news_list_item.dart';
 import 'package:codelandia_news/models/news_model.dart';
 import 'package:codelandia_news/widgets/card_widgets.dart';
 import 'package:flutter/material.dart';
@@ -27,19 +26,21 @@ class _BreakingFeedScreenState extends State<BreakingFeedScreen> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const CustomAppBar(),
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height - 214,
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: widget.filteredList.length,
-            itemBuilder: (context, index) => CardWidget(
-              item: widget.filteredList[index],
-              bookmarkToList: widget.bookmarkToList,
-              title: widget.filteredList[index].title,
-              desc: widget.filteredList[index].desc,
-              info: widget.filteredList[index].info,
-              images: widget.filteredList[index].image,
+        Expanded(
+          child: SizedBox(
+            height: MediaQuery.sizeOf(context).height - 214,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: widget.filteredList.length,
+              itemBuilder: (context, index) => CardWidget(
+                item: widget.filteredList[index],
+                bookmarkToList: widget.bookmarkToList,
+                title: widget.filteredList[index].title,
+                desc: widget.filteredList[index].desc,
+                info: widget.filteredList[index].info,
+                images: widget.filteredList[index].image,
+              ),
             ),
           ),
         ),
