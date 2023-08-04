@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:codelandia_news/constants/color.dart';
 import 'package:codelandia_news/screens/news_category_screen.dart';
-import 'package:codelandia_news/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_categories_list.dart';
@@ -30,20 +30,23 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: kColorAppBAr,
+        centerTitle: true,
+        title: const Text(
+          'Categories',
+          style: TextStyle(
+            fontSize: 23,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
       body: Column(
         children: [
-          Text(
-            'Categories',
-            style: TextStyle(
-              fontSize: 23,
-              fontWeight: FontWeight.w500,
-              color: isDarkMode.value ? Colors.white : Colors.black,
-            ),
-            textAlign: TextAlign.center,
-          ),
           const SizedBox(
-            height: 30,
+            height: 60,
           ),
           SizedBox(
             width: double.infinity,

@@ -14,6 +14,7 @@ class CustomAppBar extends StatefulWidget {
 }
 
 int indexTypeNews = 0;
+bool isSearchActive = false;
 
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
@@ -37,30 +38,44 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ),
         child: Column(
           children: [
-            ListTile(
-              leading: IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: const Icon(
-                  Icons.menu,
-                  color: Colors.white,
-                ),
-              ),
-              title: const Text(
-                textAlign: TextAlign.center,
-                "News",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    textAlign: TextAlign.center,
+                    "News",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  Visibility(
+                    visible: isSearchActive,
+                    child: const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            filled: true,
+                            hintText: 'Search News',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {});
+                      isSearchActive = !isSearchActive;
+                    },
+                    icon: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(

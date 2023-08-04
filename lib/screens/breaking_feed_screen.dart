@@ -22,13 +22,11 @@ class _BreakingFeedScreenState extends State<BreakingFeedScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const CustomAppBar(),
         Expanded(
           child: SizedBox(
-            height: MediaQuery.sizeOf(context).height - 214,
+            height: MediaQuery.sizeOf(context).height,
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
