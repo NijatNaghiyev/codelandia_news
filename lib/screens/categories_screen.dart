@@ -8,6 +8,7 @@ import '../data/app_categories_list.dart';
 import '../data/news_list_item.dart';
 import '../models/news_model.dart';
 import '../widgets/category_item.dart';
+import '../widgets/custom_app_bar.dart';
 import 'main_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -55,6 +56,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 (index) {
                   return InkWell(
                     onTap: () {
+                      indexTypeNews = index;
+
                       typeOfNews = typeList[index];
                       Timer(
                         const Duration(milliseconds: 100),

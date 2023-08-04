@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'News',
+      title: 'Custom News',
       theme: themeLight,
       darkTheme: themeDark,
       themeMode: themeMode.value,

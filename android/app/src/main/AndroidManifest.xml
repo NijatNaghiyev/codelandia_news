@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="codelandia_news"
+        android:label="Custom News"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
