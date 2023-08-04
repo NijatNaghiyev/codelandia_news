@@ -25,7 +25,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top,
         ),
-        height: 158,
+        height: 210,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -38,44 +38,70 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    textAlign: TextAlign.center,
-                    "News",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  Visibility(
-                    visible: isSearchActive,
-                    child: const Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 20),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true,
-                            hintText: 'Search News',
-                          ),
+            const Expanded(
+              child: SizedBox(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        textAlign: TextAlign.center,
+                        "News",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
                         ),
                       ),
-                    ),
+                      // Visibility(
+                      //   visible: isSearchActive,
+                      //   child: const Expanded(
+                      //     child: Padding(
+                      //       padding: EdgeInsets.only(left: 20),
+                      //       child: SizedBox(
+                      //         child: TextField(
+                      //           decoration: InputDecoration(
+                      //             filled: true,
+                      //             hintText: 'Search News',
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      // IconButton(
+                      //   onPressed: () {
+                      //     setState(() {});
+                      //     isSearchActive = !isSearchActive;
+                      //   },
+                      //   icon: const Icon(
+                      //     Icons.search,
+                      //     color: Colors.white,
+                      //   ),
+                      // ),
+                    ],
                   ),
-                  IconButton(
-                    onPressed: () {
-                      setState(() {});
-                      isSearchActive = !isSearchActive;
-                    },
-                    icon: const Icon(
+                ),
+              ),
+            ),
+            const Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(12),
+                      ),
+                    ),
+                    filled: true,
+                    hintText: 'Search News',
+                    prefixIcon: Icon(
                       Icons.search,
-                      color: Colors.white,
                     ),
                   ),
-                ],
+                ),
               ),
             ),
             Expanded(
