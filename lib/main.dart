@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:codelandia_news/screens/setting_screen.dart';
 import 'package:codelandia_news/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'constants/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,16 +43,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'News',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        useMaterial3: true,
-        textTheme: GoogleFonts.openSansTextTheme(),
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        useMaterial3: true,
-        textTheme: GoogleFonts.openSansTextTheme(),
-      ),
+      theme: themeLight,
+      darkTheme: themeDark,
       themeMode: themeMode.value,
       home: const SplashScreen(),
     );

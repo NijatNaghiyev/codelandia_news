@@ -10,6 +10,7 @@ import '../constants/color.dart';
 import '../data/news_list_item.dart';
 import '../main.dart';
 import '../models/news_model.dart';
+import 'categories_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -25,9 +26,6 @@ List<NewsModel> bookmarkedList = [];
 class _MainScreenState extends State<MainScreen> {
   List<NewsModel> filteredList = NewsListItem.item;
   void filterList() {
-    Timer(Duration.zero, () {
-      setState(() {});
-    });
     if (typeOfNews == 'FOR YOU') {
       filteredList = NewsListItem.item;
     } else {
@@ -35,6 +33,9 @@ class _MainScreenState extends State<MainScreen> {
           .where((element) => element.title == typeOfNews)
           .toList();
     }
+    Timer(Duration.zero, () {
+      setState(() {});
+    });
   }
 
   void bookmarkToList(NewsModel item) {
@@ -62,6 +63,12 @@ class _MainScreenState extends State<MainScreen> {
       activeScreen = BookMarksScreen(
         bookmarkToList: bookmarkToList,
         bookmarkedList: bookmarkedList,
+      );
+    } else if (indexScreen == 1) {
+      activeScreen = CategoriesScreen(
+        bookmarkToList: bookmarkToList,
+        filteredList: filteredList,
+        filterList: filterList,
       );
     }
     return Scaffold(

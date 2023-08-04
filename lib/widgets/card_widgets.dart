@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../models/news_model.dart';
 
-class CardWidget extends StatelessWidget {
+class CardWidget extends StatefulWidget {
   const CardWidget({
     super.key,
     required this.title,
@@ -21,6 +21,11 @@ class CardWidget extends StatelessWidget {
   final void Function(NewsModel item) bookmarkToList;
   final NewsModel item;
 
+  @override
+  State<CardWidget> createState() => _CardWidgetState();
+}
+
+class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,7 +48,7 @@ class CardWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 3),
                         child: Text(
-                          title,
+                          widget.title,
                           style: const TextStyle(
                             color: kColorSian,
                             fontSize: 17,
@@ -53,7 +58,7 @@ class CardWidget extends StatelessWidget {
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width - 200,
-                        child: Text(desc,
+                        child: Text(widget.desc,
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 22,
@@ -69,7 +74,7 @@ class CardWidget extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image(
-                        image: NetworkImage(images),
+                        image: NetworkImage(widget.images),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -97,10 +102,11 @@ class CardWidget extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          bookmarkToList(item);
+                          setState(() {});
+                          widget.bookmarkToList(widget.item);
                         },
                         icon: Icon(
-                          bookmarkedList.contains(item)
+                          bookmarkedList.contains(widget.item)
                               ? Icons.bookmark
                               : Icons.bookmark_border_outlined,
                           color: kColorSian,

@@ -20,11 +20,11 @@ class _SettingScreenState extends State<SettingScreen> {
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: const Text('Settings',
+            child: Text('Settings',
                 style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black,
+                  color: isDarkMode.value ? Colors.white : Colors.black,
                 ),
                 textAlign: TextAlign.center),
           ),
