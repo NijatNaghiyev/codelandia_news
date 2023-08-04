@@ -43,53 +43,55 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           textAlign: TextAlign.center,
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 60,
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 25,
-              runSpacing: 25,
-              children: List.generate(
-                categories.length,
-                (index) {
-                  return InkWell(
-                    onTap: () {
-                      indexTypeNews = index;
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 25,
+                runSpacing: 25,
+                children: List.generate(
+                  categories.length,
+                  (index) {
+                    return InkWell(
+                      onTap: () {
+                        indexTypeNews = index;
 
-                      typeOfNews = typeList[index];
-                      Timer(
-                        const Duration(milliseconds: 100),
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => NewsCategoryScreen(
-                                title: categories[index].title,
-                                filteredList: widget.filteredList,
-                                bookmarkToList: widget.bookmarkToList,
-                                filterList: widget.filterList,
+                        typeOfNews = typeList[index];
+                        Timer(
+                          const Duration(milliseconds: 100),
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => NewsCategoryScreen(
+                                  title: categories[index].title,
+                                  filteredList: widget.filteredList,
+                                  bookmarkToList: widget.bookmarkToList,
+                                  filterList: widget.filterList,
+                                ),
                               ),
-                            ),
-                          );
-                          setState(() {});
-                        },
-                      );
-                    },
-                    child: CategoryItem(
-                      title: categories[index].title,
-                      url: categories[index].url,
-                    ),
-                  );
-                },
+                            );
+                            setState(() {});
+                          },
+                        );
+                      },
+                      child: CategoryItem(
+                        title: categories[index].title,
+                        url: categories[index].url,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

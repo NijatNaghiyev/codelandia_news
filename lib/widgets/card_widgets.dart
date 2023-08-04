@@ -41,8 +41,10 @@ class _CardWidgetState extends State<CardWidget> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    InfoScreen(info: widget.info, images: widget.images),
+                builder: (context) => InfoScreen(
+                  info: widget.info,
+                  images: widget.images,
+                ),
               ),
             );
           },
