@@ -9,24 +9,22 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-        child: TextField(
-          decoration: InputDecoration(
-            enabledBorder: const UnderlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  14,
-                ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+      child: TextField(
+        decoration: InputDecoration(
+          enabledBorder: const UnderlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                14,
               ),
             ),
-            filled: true,
-            hintText: 'Search News',
-            prefixIcon: Icon(
-              Icons.search,
-              color: isTextFieldShow ? Colors.transparent : Colors.grey,
-            ),
+          ),
+          filled: true,
+          hintText: 'Search News',
+          prefixIcon: Icon(
+            Icons.search,
+            color: isTextFieldShow ? Colors.transparent : Colors.grey,
           ),
         ),
       ),
