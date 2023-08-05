@@ -1,4 +1,5 @@
 import 'package:codelandia_news/data/news_list_item.dart';
+import 'package:codelandia_news/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/color.dart';
@@ -121,43 +122,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class TextFieldWidget extends StatefulWidget {
-  const TextFieldWidget({
-    super.key,
-  });
-
-  @override
-  State<TextFieldWidget> createState() => _TextFieldWidgetState();
-}
-
-class _TextFieldWidgetState extends State<TextFieldWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-        child: TextField(
-          decoration: InputDecoration(
-            enabledBorder: const UnderlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  14,
-                ),
-              ),
-            ),
-            filled: true,
-            hintText: 'Search News',
-            prefixIcon: Icon(
-              Icons.search,
-              color: isTextFieldShow ? Colors.transparent : Colors.grey,
-            ),
-          ),
         ),
       ),
     );
