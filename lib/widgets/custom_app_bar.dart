@@ -15,6 +15,7 @@ class CustomAppBar extends StatefulWidget {
 
 int indexTypeNews = 0;
 bool isSearchActive = false;
+bool isTextFieldShow = false;
 
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
@@ -38,14 +39,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ),
         child: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: SizedBox(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         textAlign: TextAlign.center,
                         "News",
                         style: TextStyle(
@@ -54,55 +55,32 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           fontSize: 22,
                         ),
                       ),
-                      // Visibility(
-                      //   visible: isSearchActive,
-                      //   child: const Expanded(
-                      //     child: Padding(
-                      //       padding: EdgeInsets.only(left: 20),
-                      //       child: SizedBox(
-                      //         child: TextField(
-                      //           decoration: InputDecoration(
-                      //             filled: true,
-                      //             hintText: 'Search News',
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                      // IconButton(
-                      //   onPressed: () {
-                      //     setState(() {});
-                      //     isSearchActive = !isSearchActive;
-                      //   },
-                      //   icon: const Icon(
-                      //     Icons.search,
-                      //     color: Colors.white,
-                      //   ),
-                      // ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {});
+                          isTextFieldShow = !isTextFieldShow;
+                        },
+                        icon: const Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(12),
-                      ),
-                    ),
-                    filled: true,
-                    hintText: 'Search News',
-                    prefixIcon: Icon(
-                      Icons.search,
-                    ),
-                  ),
-                ),
+            AnimatedCrossFade(
+              firstChild: const TextFieldWidget(),
+              secondChild: const Text(''),
+              crossFadeState: isTextFieldShow
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+              duration: const Duration(
+                milliseconds: 500,
               ),
+              firstCurve: Curves.easeIn,
+              secondCurve: Curves.easeOut,
             ),
             Expanded(
               child: SizedBox(
@@ -143,6 +121,43 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class TextFieldWidget extends StatefulWidget {
+  const TextFieldWidget({
+    super.key,
+  });
+
+  @override
+  State<TextFieldWidget> createState() => _TextFieldWidgetState();
+}
+
+class _TextFieldWidgetState extends State<TextFieldWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+        child: TextField(
+          decoration: InputDecoration(
+            enabledBorder: const UnderlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  14,
+                ),
+              ),
+            ),
+            filled: true,
+            hintText: 'Search News',
+            prefixIcon: Icon(
+              Icons.search,
+              color: isTextFieldShow ? Colors.transparent : Colors.grey,
+            ),
+          ),
         ),
       ),
     );
